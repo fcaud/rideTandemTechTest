@@ -10,6 +10,7 @@ const App: React.FC<Props> = () => {
 
   useEffect(() => {
     getBusSchedule();
+    setInterval(getBusSchedule, 10000);
   }, []);
 
   const getBusSchedule = async () => {
