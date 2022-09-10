@@ -14,7 +14,7 @@ const Card: React.FC<Props> = ({ bus }) => {
       <div className='Card__Details'>
         <div>{bus.destination}</div>
         <div>
-          {bus.minutesUntilArrival === 1
+          {bus.minutesUntilArrival <= 1
             ? 'Due'
             : `${bus.minutesUntilArrival} mins`}
         </div>
