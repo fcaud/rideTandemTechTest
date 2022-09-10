@@ -15,18 +15,24 @@ const App: React.FC<Props> = () => {
       apiCallInProgress.current = true;
       let busDataResponse = await getAllBusTimes();
       apiCallInProgress.current = false;
+
+      //filter for buses running on current day
       const currentDay = new Date().getDay();
       busDataResponse = busDataResponse.filter(
         (bus) => !bus.nonOperationalDays.includes(currentDay)
       );
+
+      //sorting schedule for buses departing soonest
       busDataResponse = busDataResponse.sort(
         (bus1, bus2) => bus1.minutesUntilArrival - bus2.minutesUntilArrival
       );
+
       setBusSchedule(busDataResponse);
     }
   };
 
   useEffect(() => {
+    //Initial fetch data on mount and then interval refetching at 10s intervals
     getBusSchedule();
     const intervalId = setInterval(getBusSchedule, 10000);
     //clean-up interval on unmount
