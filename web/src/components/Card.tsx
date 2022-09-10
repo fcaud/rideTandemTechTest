@@ -1,16 +1,19 @@
 import React from 'react';
+import { BusService } from '../utils/types';
 
-interface Props {}
+interface Props {
+  bus: BusService;
+}
 
-const Card: React.FC<Props> = () => {
+const Card: React.FC<Props> = ({ bus }) => {
   return (
     <div className='Card'>
       <div className='Card__Header'>
-        <b>176</b>
+        <b>{bus.busId}</b>
       </div>
       <div className='Card__Details'>
-        <div>To Newham Close</div>
-        <div>2 mins</div>
+        <div>{bus.destination}</div>
+        <div>{bus.minutesUntilArrival} mins</div>
       </div>
     </div>
   );

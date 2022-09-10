@@ -1,9 +1,9 @@
+import { BusService } from './types';
+
 const baseUrl = 'http://localhost:3000';
 
-const getAllBusTimes = async () => {
-  let response = await fetch(`${baseUrl}/bus-times`);
-  response = await response.json();
-  return response;
+export const getAllBusTimes = async () => {
+  const response = await fetch(`${baseUrl}/bus-times`);
+  const parsedResponse = (await response.json()) as BusService[];
+  return parsedResponse;
 };
-
-export default { getAllBusTimes };
