@@ -3,4 +3,5 @@ export type BusService = {
   busId: number;
   destination: string;
   minutesUntilArrival: number;
+  nonOperationalDays: number[];
 };

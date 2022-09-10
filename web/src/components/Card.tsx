@@ -13,7 +13,11 @@ const Card: React.FC<Props> = ({ bus }) => {
       </div>
       <div className='Card__Details'>
         <div>{bus.destination}</div>
-        <div>{bus.minutesUntilArrival} mins</div>
+        <div>
+          {bus.minutesUntilArrival === 1
+            ? 'Due'
+            : `${bus.minutesUntilArrival} mins`}
+        </div>
       </div>
     </div>
   );

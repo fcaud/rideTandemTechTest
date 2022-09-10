@@ -6,6 +6,7 @@ export interface BusTime {
   busId: number;
   destination: string;
   minutesUntilArrival: number;
+  nonOperationalDays: number[];
 }
 
 @Injectable()
@@ -16,12 +17,17 @@ export class ApiService {
   private generateRandomBusTimes(timesToGenerate: number) {
     const data: BusTime[] = [];
     for (let i = 0; i < timesToGenerate; i++) {
-      const { id: busId, destination } = this.getRandomBusRoute();
+      const {
+        id: busId,
+        destination,
+        nonOperationalDays,
+      } = this.getRandomBusRoute();
       data.push({
         id: i,
         busId,
         destination,
         minutesUntilArrival: _.random(1, 15),
+        nonOperationalDays,
       });
     }
     return data;

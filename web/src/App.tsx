@@ -13,7 +13,14 @@ const App: React.FC<Props> = () => {
   }, []);
 
   const getBusSchedule = async () => {
-    const busDataResponse = await getAllBusTimes();
+    let busDataResponse = await getAllBusTimes();
+    const currentDay = new Date().getDay();
+    busDataResponse = busDataResponse.filter(
+      (bus) => !bus.nonOperationalDays.includes(currentDay)
+    );
+    busDataResponse = busDataResponse.sort(
+      (bus1, bus2) => bus1.minutesUntilArrival - bus2.minutesUntilArrival
+    );
     setBusSchedule(busDataResponse);
   };
 
