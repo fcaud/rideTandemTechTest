@@ -2,6 +2,7 @@
 
 ## Suggestions for further implementation
 
-- Use current location for live bus times
-- Filter/search for particular service
-- sort on departing soonest (implemented)
+- Sort on departing soonest (implemented)
+- Replace 'Park Road' with current location of the user
+- Filter/search for particular bus service
+- Add linting for 'web'
