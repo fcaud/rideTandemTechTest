@@ -14,7 +14,7 @@ export class ApiService {
     return this.generateRandomBusTimes(5);
   }
   private generateRandomBusTimes(timesToGenerate: number) {
-    let data: BusTime[] = [];
+    const data: BusTime[] = [];
     for (let i = 0; i < timesToGenerate; i++) {
       const { id: busId, destination } = this.getRandomBusRoute();
       data.push({
